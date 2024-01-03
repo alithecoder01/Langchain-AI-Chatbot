@@ -5,12 +5,16 @@ import streamlit as st
 st.title("Pets name genrator")
 
 # Select the Animal type 
-animal_type = st.sidebar.selectbox("What is your pet ?", ("Cat", "Cow", "Dog"))
+user_animal_type = st.sidebar.selectbox("What is your pet ?", ("Cat", "Cow", "Dog"))
 
 # Select the color
-if animal_type == "Cat":
-    pet_color =st.sidebar.text_area(label="What is your Pet Color?", max_chars=10) 
-if animal_type == "Cow":
-    pet_color =st.sidebar.text_area(label="What is your Pet Color?", max_chars=10) 
-if animal_type == "Dog":
-    pet_color =st.sidebar.text_area(label="What is your Pet Color?", max_chars=10) 
+if user_animal_type == "Cat":
+    user_pet_color =st.sidebar.text_area(label="What is your Pet Color?", max_chars=10) 
+if user_animal_type == "Cow":
+    user_pet_color =st.sidebar.text_area(label="What is your Pet Color?", max_chars=10) 
+if user_animal_type == "Dog":
+    user_pet_color =st.sidebar.text_area(label="What is your Pet Color?", max_chars=10) 
+
+if user_pet_color :
+    response = lgc.genratename(user_animal_type,user_pet_color)
+    st.text(response)
