@@ -18,3 +18,4 @@ if user_animal_type == "Dog":
 if user_pet_color :
     response = lgc.genratename(user_animal_type,user_pet_color)
     st.text(response["pet_name"])
+    
