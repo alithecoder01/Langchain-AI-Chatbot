@@ -10,12 +10,11 @@ user_animal_type = st.sidebar.selectbox("What is your pet ?", ("Cat", "Cow", "Do
 # Select the color
 if user_animal_type == "Cat":
     user_pet_color =st.sidebar.text_area(label="What is your Pet Color?", max_chars=10) 
-if user_animal_type == "Cow":
+elif user_animal_type == "Cow":
     user_pet_color =st.sidebar.text_area(label="What is your Pet Color?", max_chars=10) 
-if user_animal_type == "Dog":
+elif user_animal_type == "Dog":
     user_pet_color =st.sidebar.text_area(label="What is your Pet Color?", max_chars=10) 
 
 if user_pet_color :
     response = lgc.genratename(user_animal_type,user_pet_color)
     st.text(response["pet_name"])
-    
