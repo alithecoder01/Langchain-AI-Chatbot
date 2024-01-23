@@ -2,7 +2,11 @@ from langchain.llms import OpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 from dotenv import load_dotenv
-
+from langchain.agents import load_tools
+from langchain.agents import initialize_agent
+from langchain.agents import AgentExecutor, create_react_agent
+import numexpr
+from langchain import hub
 
 load_dotenv()
 
@@ -19,5 +23,24 @@ def genratename(animal_type, pet_color):
 
     return respons
 
+def langchain_agent():
+    llm = OpenAI(temperature= 0.7)
+
+    #load tools 
+    tools = load_tools(["wikipedia"], llm = llm)
+
+    # Get the prompt to use - you can modify this!
+    prompt = hub.pull("hwchase17/react")
+
+    # Construct the ReAct agent
+    agent = create_react_agent(llm, tools, prompt)
+
+    # Create an agent executor by passing in the agent and tools, the verbose is to show the output
+    agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+    # Add the prompt
+    agent_executor.invoke({"input": "what is the average age of a dog in 2023?"})
+    
+
 if __name__ == "__main__":
-    print(genratename("cat","red"))
+    langchain_agent()
+    #print(genratename("cat","red"))
