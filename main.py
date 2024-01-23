@@ -10,9 +10,9 @@ user_animal_type = st.sidebar.selectbox("What is your pet ?", ("Cat", "Cow", "Do
 # Select the color
 if user_animal_type == "Cat":
     user_pet_color =st.sidebar.text_area(label="What is your Pet Color?", max_chars=10) 
-elif user_animal_type == "Cow":
+if user_animal_type == "Cow":
     user_pet_color =st.sidebar.text_area(label="What is your Pet Color?", max_chars=10) 
-elif user_animal_type == "Dog":
+if user_animal_type == "Dog":
     user_pet_color =st.sidebar.text_area(label="What is your Pet Color?", max_chars=10) 
 
 if user_pet_color :
